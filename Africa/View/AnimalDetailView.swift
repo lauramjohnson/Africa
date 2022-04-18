@@ -47,13 +47,31 @@ struct AnimalDetailView: View {
                 .padding(.horizontal)
                 InsetGalleryView(animal: animal)
                 // facts
-                
+                Group {
+                    HeadingView(headingImage: "questionmark.circle", headingText: "Did you know?")
+                }
+                .padding(.horizontal)
+                InsetFactView(animal: animal)
                 // description
-                
+                Group {
+                    HeadingView(headingImage: "info.circle", headingText: "All about \(animal.name)")
+                    Text(animal.description)
+                        .multilineTextAlignment(.leading)
+                        .layoutPriority(1)
+                }
+                .padding(.horizontal)
                 // map
-                
+                Group {
+                    HeadingView(headingImage: "map", headingText: "National Parks")
+                    InsetMapView()
+                }
+                .padding(.horizontal)
                 // link
-                
+                Group {
+                    HeadingView(headingImage: "books.vertical", headingText: "Learn More")
+                    ExternalWeblinkView(animal: animal)
+                }
+                .padding(.horizontal)
                 
             }
             .navigationBarTitle("Learn about \(animal.name)",
